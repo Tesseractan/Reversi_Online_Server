@@ -1,0 +1,13 @@
+c:\users\user\source\repos\Reversi_Online_Server_1.1\Reversi_Online_Server_1.1\bin\Debug\Reversi_Online_Server_1.1.exe.config
+c:\users\user\source\repos\Reversi_Online_Server_1.1\Reversi_Online_Server_1.1\bin\Debug\Reversi_Online_Server_1.1.exe
+c:\users\user\source\repos\Reversi_Online_Server_1.1\Reversi_Online_Server_1.1\bin\Debug\Reversi_Online_Server_1.1.pdb
+c:\users\user\source\repos\Reversi_Online_Server_1.1\Reversi_Online_Server_1.1\obj\Debug\Reversi_Online_Server_1.1.csprojResolveAssemblyReference.cache
+c:\users\user\source\repos\Reversi_Online_Server_1.1\Reversi_Online_Server_1.1\obj\Debug\Reversi_Online_Server_1.1.csproj.CoreCompileInputs.cache
+c:\users\user\source\repos\Reversi_Online_Server_1.1\Reversi_Online_Server_1.1\obj\Debug\Reversi_Online_Server_1.1.exe
+c:\users\user\source\repos\Reversi_Online_Server_1.1\Reversi_Online_Server_1.1\obj\Debug\Reversi_Online_Server_1.1.pdb
+C:\Users\User\source\repos\Reversi_Online_Server_1.1\Reversi_Online_Server_1.1\bin\Debug\Reversi.mdf
+C:\Users\User\source\repos\Reversi_Online_Server_1.1\Reversi_Online_Server_1.1\bin\Debug\Reversi_log.ldf
+C:\Users\User\source\repos\Reversi_Online_Server_1.1\Reversi_Online_Server_1.1\bin\Debug\System.ValueTuple.dll
+C:\Users\User\source\repos\Reversi_Online_Server_1.1\Reversi_Online_Server_1.1\bin\Debug\System.ValueTuple.xml
+C:\Users\User\source\repos\Reversi_Online_Server_1.1\Reversi_Online_Server_1.1\bin\Debug\Message.dll
+C:\Users\User\source\repos\Reversi_Online_Server_1.1\Reversi_Online_Server_1.1\bin\Debug\Message.pdb
