@@ -75,6 +75,51 @@ namespace Reversi_Online_Server_1._1
             return valid;
         }
 
+        [RequiresAuthentication]
+        public IEnumerable<object> GetData(params string[] keys)
+        {
+            if (!this.client.Authenticated) throw new NullReferenceException("client should be already authenticated");
+            SqlCommand command = new SqlCommand("SELECT " , ReversiDatabaseManager.Database.Connection);
+            for(int i=0; i<keys.Length; i++)
+            {
+                command.CommandText += $"@key{i}";
+                command.Parameters.AddWithValue($"key{i}", keys[i]);
+                if (i < keys.Length - 1) command.CommandText += ",";
+                command.CommandText += " ";
+            }
+
+            command.CommandText += " FROM users WHERE username = @username;";
+            //command.Parameters.AddWithValue("keys", String.Join(", ", keys));
+            command.Parameters.AddWithValue("username", this.client.Username);
+            using (SqlDataReader reader = command.ExecuteReader())
+            {
+                reader.Read();
+                for(int i=0; i<keys.Length; i++)
+                {
+                    yield return reader[keys[i]];
+                }
+            }
+
+        }
+        [RequiresAuthentication]
+        public void SetData(params (string, object)[] records)
+        {
+            if (!this.client.Authenticated) throw new NullReferenceException("client should be already authenticated");
+            SqlCommand command = new SqlCommand("UPDATE users SET ", ReversiDatabaseManager.Database.Connection);
+            for (int i = 0; i < records.Length; i++)
+            {
+                command.CommandText += $"@key{i} = @value{i}";
+
+                command.Parameters.AddWithValue($"key{i}", records[i].Item1);
+                command.Parameters.AddWithValue($"value{i}", records[i].Item2);
+
+                if (i < records.Length - 1) command.CommandText += ", ";
+            }
+            command.CommandText += ";";
+            command.ExecuteNonQuery();
+        }
+
+        [RequiresAuthentication]
         public void MarkOnline()
         {
             if (!this.client.Authenticated) throw new NullReferenceException("client should be already authenticated");
@@ -112,5 +157,6 @@ namespace Reversi_Online_Server_1._1
             }
             return valid;
         }
+        public ClientDialog Client => this.client;
     }
 }

@@ -11,13 +11,41 @@ namespace Reversi_Online_Server_1._1
 {
     class GameServer : Server
     {
+        class Expectant
+        {
+            private ClientDialog client;
+            private TimeSpan timeControl;
+            private int wantedRating;
+            private int expectantRating;
+
+            public Expectant(ClientDialog client, TimeSpan timeControl, int wantedRating)
+            {
+                this.client = client;
+                this.timeControl = timeControl;
+                this.wantedRating = wantedRating;
+                this.GetExpectantRating();
+            }
+            private void GetExpectantRating()
+            {
+                UserConfiguration userConfiguration = new UserConfiguration(this.client);
+                this.expectantRating = (int)userConfiguration.GetData("rating").ToArray()[0];
+            }
+            public ClientDialog Client => client;
+            public TimeSpan TimeControl => timeControl;
+            public int WantedRating => wantedRating;
+            public int ExpectantRating => expectantRating;
+        }
+
+        //private ClientDialog expectant = null;
+        private List<Expectant> anteroom;
         public GameServer(int port) : base(port)
         {
-            
+            this.anteroom = new List<Expectant>();
         }
         protected override void HandleClient(ClientDialog client)
         {
-            try {
+            try
+            {
                 while (true)
                 {
                     Message request = client.ReceiveMessage();
@@ -43,6 +71,18 @@ namespace Reversi_Online_Server_1._1
                                 }
                             }
                             break;
+                        case "EXPECT":
+                            /*if (this.expectant == null) this.expectant = client;
+                            else
+                            {
+                                this.expectant.SendMessage("MESSAGE", ("Sender", client.Username), ("Content", request.Payload["Message"]));
+                                this.expectant = null;
+                            }
+                            break;*/
+
+                        case "UNEXPECT":
+                            //if (this.expectant == client) this.expectant = null; 
+                            break;
                         case "DISCONNECT":
                             client.Dispose();
                             throw new SocketException();
@@ -53,5 +93,7 @@ namespace Reversi_Online_Server_1._1
                 this.clients.Remove(client);
             }
         }
+
+        //public ClientDialog Expectant => this.expectant;
     }
 }

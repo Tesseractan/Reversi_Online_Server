@@ -32,6 +32,7 @@ namespace Reversi_Online_Server_1._1
                         case "LOGIN":
                             userConfiguration.LogIn((LoginUserData)request.Payload["LoginData"]);
                             break;
+
                         case "DISCONNECT":
                             client.Dispose();
                             throw new SocketException();
